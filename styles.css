@@ -14,10 +14,10 @@ body {
 .box {
     border: 2px solid black;
     border-radius: 10px;
-    padding: 5px;
-    margin: 5px;
+    padding: 3px;
+    margin: 3px;
     text-align: center;
-    width: 200px;
+    width: 80%;
     position: relative;
 }
 input[type="number"] {
@@ -56,7 +56,7 @@ input[type="number"] {
 }
 .attribute-label {
     display: inline-block;
-    width: 150px;
+    width: 120px;
 }
 .filled {
     background-color: black;
