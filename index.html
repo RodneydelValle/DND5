@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Character Sheet</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Character Sheet</h2>
+
+            <!-- Name and Image Upload -->
+            <div class="row">
+                <div class="box">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" value="GENERICO" onchange="saveData()">
+                </div>
+                <div class="box">
+                    <label>Character Image:</label>
+                    <button onclick="promptImageURL()">Load Image URL</button>
+                    <div class="image-preview" id="imagePreview"></div>
+                </div>
+            </div>
+
+            <!-- Level and Proficiency Bonus -->
+            <div class="row">
+                <div class="box">
+                    <label for="level">Level:</label>
+                    <input type="number" id="level" value="1" onchange="updateProficiency()">
+                    <br><br>
+                    <label>Proficiency Bonus:</label>
+                    <div class="circle-large">
+                        <span id="proficiencyBonus">+2</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strength and Dexterity (as example) -->
+            <div class="row">
+                <div class="box attribute-box">
+                    <label>STRENGTH</label>
+                    <div class="circle-large">
+                        <span id="strengthMod">0</span>
+                    </div>
+                    <label>SCORE:</label>
+                    <input type="number" id="strengthScore" value="10" onchange="updateModifier('strength')">
+                    <div>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'strengthSavingThrow', 'strength')"></div>
+                            <span class="attribute-label">Saving Throw</span> <span id="strengthSavingThrow">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'strengthAthletics', 'strength')"></div>
+                            <span class="attribute-label">Athletics</span> <span id="strengthAthletics">0</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="box attribute-box">
+                    <label>DEXTERITY</label>
+                    <div class="circle-large">
+                        <span id="dexterityMod">0</span>
+                    </div>
+                    <label>SCORE: </label>
+                    <input type="number" id="dexterityScore" value="10" onchange="updateModifier('dexterity')">
+                    <div>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'dexteritySavingThrow', 'dexterity')"></div>
+                            <span class="attribute-label">Saving Throw</span> <span id="dexteritySavingThrow">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'dexterityAcrobatics', 'dexterity')"></div>
+                            <span class="attribute-label">Acrobatics</span> <span id="dexterityAcrobatics">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'dexteritySleightOfHand', 'dexterity')"></div>
+                            <span class="attribute-label">Sleight of Hand</span> <span id="dexteritySleightOfHand">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'dexterityStealth', 'dexterity')"></div>
+                            <span class="attribute-label">Stealth</span> <span id="dexterityStealth">0</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Constitution and Intelligence -->
+            <div class="row">
+                <div class="box attribute-box">
+                    <label>CONSTITUTION</label>
+                    <div class="circle-large">
+                        <span id="constitutionMod">0</span>
+                    </div>
+                    <label>SCORE: </label>
+                    <input type="number" id="constitutionScore" value="10" onchange="updateModifier('constitution')">
+                    <div>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'constitutionSavingThrow', 'constitution')"></div>
+                            <span class="attribute-label">Saving Throw</span> <span id="constitutionSavingThrow">0</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="box attribute-box">
+                    <label>INTELLIGENCE</label>
+                    <div class="circle-large">
+                        <span id="intelligenceMod">0</span>
+                    </div>
+                    <label>SCORE: </label>
+                    <input type="number" id="intelligenceScore" value="10" onchange="updateModifier('intelligence')">
+                    <div>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'intelligenceSavingThrow', 'intelligence')"></div>
+                            <span class="attribute-label">Saving Throw</span> <span id="intelligenceSavingThrow">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'intelligenceArcana', 'intelligence')"></div>
+                            <span class="attribute-label">Arcana</span> <span id="intelligenceArcana">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'intelligenceHistory', 'intelligence')"></div>
+                            <span class="attribute-label">History</span> <span id="intelligenceHistory">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'intelligenceInvestigation', 'intelligence')"></div>
+                            <span class="attribute-label">Investigation</span> <span id="intelligenceInvestigation">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'intelligenceNature', 'intelligence')"></div>
+                            <span class="attribute-label">Nature</span> <span id="intelligenceNature">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'intelligenceReligion', 'intelligence')"></div>
+                            <span class="attribute-label">Religion</span> <span id="intelligenceReligion">0</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wisdom and Charisma -->
+            <div class="row">
+                <div class="box attribute-box">
+                    <label>WISDOM</label>
+                    <div class="circle-large">
+                        <span id="wisdomMod">0</span>
+                    </div>
+                    <label>SCORE: </label>
+                    <input type="number" id="wisdomScore" value="10" onchange="updateModifier('wisdom')">
+                    <div>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'wisdomSavingThrow', 'wisdom')"></div>
+                            <span class="attribute-label">Saving Throw</span> <span id="wisdomSavingThrow">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'wisdomAnimalHandling', 'wisdom')"></div>
+                            <span class="attribute-label">Animal Handling</span> <span id="wisdomAnimalHandling">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'wisdomInsight', 'wisdom')"></div>
+                            <span class="attribute-label">Insight</span> <span id="wisdomInsight">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'wisdomMedicine', 'wisdom')"></div>
+                            <span class="attribute-label">Medicine</span> <span id="wisdomMedicine">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'wisdomPerception', 'wisdom')"></div>
+                            <span class="attribute-label">Perception</span> <span id="wisdomPerception">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'wisdomSurvival', 'wisdom')"></div>
+                            <span class="attribute-label">Survival</span> <span id="wisdomSurvival">0</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="box attribute-box">
+                    <label>CHARISMA</label>
+                    <div class="circle-large">
+                        <span id="charismaMod">0</span>
+                    </div>
+                    <label>SCORE: </label>
+                    <input type="number" id="charismaScore" value="10" onchange="updateModifier('charisma')">
+                    <div>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'charismaSavingThrow', 'charisma')"></div>
+                            <span class="attribute-label">Saving Throw</span> <span id="charismaSavingThrow">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'charismaDeception', 'charisma')"></div>
+                            <span class="attribute-label">Deception</span> <span id="charismaDeception">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'charismaIntimidation', 'charisma')"></div>
+                            <span class="attribute-label">Intimidation</span> <span id="charismaIntimidation">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'charismaPerformance', 'charisma')"></div>
+                            <span class="attribute-label">Performance</span> <span id="charismaPerformance">0</span>
+                        </label>
+                        <label>
+                            <div class="circle-small" onclick="toggleFill(this, 'charismaPersuasion', 'charisma')"></div>
+                            <span class="attribute-label">Persuasion</span> <span id="charismaPersuasion">0</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- Navbar -->
+    <div class="navbar">
+        <button onclick="toggleColorOptions()">Change Colors</button>
+        <div class="color-options" id="colorOptions">
+            <label>Background Color: 
+                <input type="color" id="backgroundColor" onchange="changeColor('background')">
+            </label>
+            <label>Text Color: 
+                <input type="color" id="textColor" onchange="changeColor('text')">
+            </label>
+            <label>Line Color: 
+                <input type="color" id="lineColor" onchange="changeColor('line')">
+            </label>
+            <label>Box Color: 
+                <input type="color" id="boxColor" onchange="changeColor('box')">
+            </label>
+        </div>
+    </div>
+        <script src="script.js"></script>
+    </body>
+</html>
+ 
