@@ -70,3 +70,12 @@ input[type="number"] {
     background-position: center;
     border-radius: 5px;
 }
+.hoja_personaje {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    max-width: 90%; /* Limita el ancho máximo */
+    margin: auto;
+    transform: scale(0.9); /* Escala general para reducir tamaño */
+}
