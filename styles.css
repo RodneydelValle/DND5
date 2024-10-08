@@ -44,9 +44,7 @@ input[type="number"] {
     margin: 5px;
     cursor: pointer;
 }
-.filled {
-    background-color: black;
-}
+
 .attribute-box {
     text-align: left;
 }
@@ -60,6 +58,7 @@ input[type="number"] {
 }
 .filled {
     background-color: black;
+    background-color: #d7ccc8;
 }
 .image-preview {
     width: 100px;
@@ -120,8 +119,4 @@ button:hover {
     background-color: #d7ccc8;
 }
 
-.circle-small {
-    border: 2px solid #795548;
-    background-color: #d7ccc8;
-}
 
