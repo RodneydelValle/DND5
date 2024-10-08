@@ -79,3 +79,49 @@ input[type="number"] {
     margin: auto;
     transform: scale(0.9); /* Escala general para reducir tamaño */
 }
+body {
+    background: url('ruta-a-tu-textura-de-pergamino.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Cinzel', serif; /* Fuente medieval */
+    color: #3e2723; /* Marrón oscuro */
+}
+
+.hoja_personaje {
+    background: rgba(255, 248, 220, 0.9); /* Color pergamino */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    border: 2px solid #3e2723;
+    padding: 10px;
+}
+
+.box {
+    border: 2px solid #795548;
+    background: #f5f5f5;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+button {
+    background-color: #8d6e63;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Cinzel', serif;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #6d4c41;
+}
+
+.circle-large {
+    border: 2px solid #795548;
+    background-color: #d7ccc8;
+}
+
+.circle-small {
+    border: 2px solid #795548;
+    background-color: #d7ccc8;
+}
+
